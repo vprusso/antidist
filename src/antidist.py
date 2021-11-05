@@ -7,7 +7,9 @@ class AntiDist:
     """For a given dimension, determine whether a collection of "d"
     d-dimensional states are antidistinguishable."""
 
-    def __init__(self, dim: int, vectors: np.ndarray = None, verbose: bool = False) -> None:
+    def __init__(
+        self, dim: int, vectors: np.ndarray = None, verbose: bool = False
+    ) -> None:
         """Construct problem instance for given dimension.
 
         Args:
@@ -33,15 +35,15 @@ class AntiDist:
         Returns:
             An np.ndarray of "d" d-dimensional complex random vectors.
         """
-        components = np.random.randn(self.dim*self.dim, 2).view(np.complex128)
+        components = np.random.randn(self.dim * self.dim, 2).view(np.complex128)
         vectors = []
         for v in range(self.dim):
             vectors.append([])
             for c in range(self.dim):
-                vectors[v].append(components[v*self.dim + c][0])
+                vectors[v].append(components[v * self.dim + c][0])
 
             # Normalize vectors.
-            vectors[v] = vectors[v]/np.linalg.norm(vectors[v])
+            vectors[v] = vectors[v] / np.linalg.norm(vectors[v])
         return np.array(vectors)
 
     @property
@@ -60,7 +62,7 @@ class AntiDist:
         # Set up density matrices as problem parameters.
         density_matrices: list[picos.Constant] = []
         for i in range(num_states):
-            mtx = (state_mtx[i, :].H * state_mtx[i, :])
+            mtx = state_mtx[i, :].H * state_mtx[i, :]
             density_matrices.append(picos.Constant("ρ[{}]".format(i), mtx))
 
         # Set up the Lagrange multiplier matrix.
@@ -95,12 +97,16 @@ class AntiDist:
             for j, _ in enumerate(self.vectors):
                 if i != j:
 
-                    ip_val = np.abs(np.trace(self.vectors[i].conj().T * self.vectors[j].reshape(-1,1)))
+                    ip_val = np.abs(
+                        np.trace(
+                            self.vectors[i].conj().T * self.vectors[j].reshape(-1, 1)
+                        )
+                    )
 
                     # Retain the smallest and largest overlap of states.
                     self.smallest_overlap = min(self.smallest_overlap, ip_val)
                     self.largest_overlap = max(self.largest_overlap, ip_val)
-                    
+
                     # If |<ρ_i|ρ_j>| > (d − 2)/(d − 1) for some i != j, return
                     # False.
                     if ip_val > self.upper_bound:

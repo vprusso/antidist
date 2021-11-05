@@ -18,6 +18,7 @@ python = "^3.9"
 cvxopt = "^1.2.5"
 picos = "^2.0.30"
 numpy = "^1.19.4"
+black = "^21.10b0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.7"
