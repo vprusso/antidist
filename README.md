@@ -7,7 +7,6 @@ arXiv:XX note.
 This code provides an example of a counterexample to the conjecture, but it can
 also be used to study antidistinguishability more broadly.
 
-[![asciicast](https://asciinema.org/a/gOQDwFVWx9lwXTae6GRXQ8URL.png)](https://asciinema.org/a/gOQDwFVWx9lwXTae6GRXQ8URL)
 
 ## Antidistinguishability Conjecture
 
@@ -69,7 +68,7 @@ Iteration 10 out of 10. Is antidistinguishable: True -- Is violated: False
 The counterexample shown in [4] can be invoked 
 
 ```
-python examples/counter_example.py
+python src/counter_example.py
 ```
 
 ### References

@@ -7,11 +7,13 @@ class AntiDist:
     """For a given dimension, determine whether a collection of "d"
     d-dimensional states are antidistinguishable."""
 
-    def __init__(self, dim: int, vectors: np.ndarray = None) -> None:
+    def __init__(self, dim: int, vectors: np.ndarray = None, verbose: bool = False) -> None:
         """Construct problem instance for given dimension.
 
         Args:
             dim: Dimension of states.
+            vectors: Optional argument to supply specific vectors
+            verbose: Optional argument for SDP solver verbosity.
         """
         self.dim = dim
 
@@ -22,10 +24,8 @@ class AntiDist:
         # Conjectured upper bound for the overlap of states.
         self.upper_bound = (self.dim - 2) / (self.dim - 1)
 
-        if vectors is None:
-            self.vectors = self.generate_random_vectors()
-        else:
-            self.vectors = vectors
+        self.vectors = self.generate_random_vectors() if vectors is None else vectors
+        self.verbose = verbose
 
     def generate_random_vectors(self) -> np.ndarray:
         """Return a list of "d" d-dimensional Haar-random vectors.
@@ -44,11 +44,9 @@ class AntiDist:
             vectors[v] = vectors[v]/np.linalg.norm(vectors[v])
         return np.array(vectors)
 
-    def is_antidistinguishable(self, verbose=False) -> bool:
+    @property
+    def is_antidistinguishable(self) -> bool:
         """Return whether the states are antidistinguishable.
-
-        Args:
-            verbose: Whether to print the results of the computation.
 
         Return:
             True if the states are antidistinguishable, False otherwise.
@@ -73,7 +71,7 @@ class AntiDist:
 
         # Inner product is max: <I, Y> where "I" is the d-dimensional identity operator.
         problem.set_objective("max", "I" | y_var)
-        solution = problem.solve(solver="cvxopt", verbosity=verbose)
+        solution = problem.solve(solver="cvxopt", verbosity=self.verbose)
 
         # Extract the optimal measurements:
         self.measurements = [problem.get_constraint(k).dual for k in range(num_states)]
@@ -82,6 +80,7 @@ class AntiDist:
         self.sdp_val = solution.value
         return True if np.isclose(self.sdp_val, 0) else False
 
+    @property
     def is_inequality_satisfied(self) -> bool:
         """The anti-distinguishability conjecture states that for |ρ_1>, ...,
         |ρ_d> pure states, if |<ρ_i|ρ_j>| ≤ (d − 2)/(d − 1) for all i != j, then
@@ -108,6 +107,7 @@ class AntiDist:
                         return False
         return True
 
+    @property
     def is_conjecture_violated(self) -> bool:
         """Check if the antidistinguishability conjecture is satisfied.
 
@@ -117,4 +117,4 @@ class AntiDist:
         # The conjecture states that if the inequality is satisfied, then the
         # states are antidistinguishable. If we find a violation of this fact
         # then we have a violation of the conjecture.
-        return self.is_inequality_satisfied() and not self.is_antidistinguishable()
+        return self.is_inequality_satisfied and not self.is_antidistinguishable

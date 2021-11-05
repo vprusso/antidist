@@ -13,5 +13,5 @@ if __name__ == "__main__":
 
     for i in range(iters):
         ad = AntiDist(dim)
-        print(f"Iteration {i+1} out of {iters}. Is antidistinguishable: {ad.is_antidistinguishable()} -- Is violated: {ad.is_conjecture_violated()}")
+        print(f"Iteration {i+1} out of {iters}. Is antidistinguishable: {ad.is_antidistinguishable} -- Is violated: {ad.is_conjecture_violated}")
 
