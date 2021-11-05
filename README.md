@@ -7,8 +7,7 @@ arXiv:XX note.
 This code provides an example of a counterexample to the conjecture, but it can
 also be used to study antidistinguishability more broadly.
 
-
-## Antidistinguishability Conjecture
+### Antidistinguishability Conjecture
 
 The antidistinguishability conjecture was originally states in [1].
 Specifically, from Appendix-C of [1], the conjecture is stated as follows:
@@ -20,7 +19,7 @@ The conjecture trivially holds for d = 2 and it also holds for d = 3 based on
 
 The conjecture does not hold for d = 4 as shown in [4].
 
-## Installing
+### Installing
 
 Python 3.9+ is required along with the `poetry` program. To install a virtual
 environment with the package along with all dependencies installed, one may run
@@ -48,7 +47,7 @@ states are equal to 5, we would run the following:
 python main.py -d 5 -i 10
 ```
 
-this will yield the following output:
+this will yield output that looks akin to the following:
 
 ```
 Iteration 1 out of 10. Is antidistinguishable: True -- Is violated: False

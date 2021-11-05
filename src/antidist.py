@@ -65,20 +65,18 @@ class AntiDist:
             mtx = state_mtx[i, :].H * state_mtx[i, :]
             density_matrices.append(picos.Constant("ρ[{}]".format(i), mtx))
 
-        # Set up the Lagrange multiplier matrix.
+        # Set up variables for SDP:
         y_var = picos.HermitianVariable("Y", (dim, dim))
-
-        # Add constraints:
         problem.add_list_of_constraints([y_var << p for p in density_matrices])
 
         # Inner product is max: <I, Y> where "I" is the d-dimensional identity operator.
         problem.set_objective("max", "I" | y_var)
         solution = problem.solve(solver="cvxopt", verbosity=self.verbose)
 
-        # Extract the optimal measurements:
         self.measurements = [problem.get_constraint(k).dual for k in range(num_states)]
 
-        # Compute the error rate. Value > 0 indicates not antidistinguishable.
+        # Compute the optimal value of the SDP. A value > 0 indicates the states
+        # are *not* antidistinguishable.
         self.sdp_val = solution.value
         return True if np.isclose(self.sdp_val, 0) else False
 
