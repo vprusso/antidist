@@ -44,12 +44,7 @@ For instance, if we wish to run 10 random tests when the dimension of the pure
 states are equal to 5, we would run the following:
 
 ```
-python main.py -d 5 -i 10
-```
-
-this will yield output that looks akin to the following:
-
-```
+>>> python main.py -d 5 -i 10
 Iteration 1 out of 10. Is antidistinguishable: True -- Is violated: False
 Iteration 2 out of 10. Is antidistinguishable: True -- Is violated: False
 Iteration 3 out of 10. Is antidistinguishable: True -- Is violated: False
@@ -67,7 +62,10 @@ Iteration 10 out of 10. Is antidistinguishable: True -- Is violated: False
 The counterexample shown in [4] can be invoked 
 
 ```
-python src/counter_example.py
+>>> python src/counter_example.py
+Are the states antidistinguishable: False
+Is inequality satisfied: True
+Is conjecture violated: True
 ```
 
 ### References
