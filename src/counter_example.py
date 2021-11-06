@@ -1,6 +1,7 @@
 """Counterexample of antidistinguishability conjecture from arXiv:XX."""
-from antidist import AntiDist
 import numpy as np
+
+from antidist import AntiDist
 
 
 if __name__ == "__main__":

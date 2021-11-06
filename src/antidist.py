@@ -1,6 +1,6 @@
 import cvxopt
-import picos
 import numpy as np
+import picos
 
 
 class AntiDist:
