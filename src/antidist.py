@@ -1,3 +1,18 @@
+# Copyright (C) 2021 Vincent Russo
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 import cvxopt
 import numpy as np
 import picos
@@ -55,7 +70,7 @@ class AntiDist:
         """
         problem = picos.Problem()
 
-        # States as rows:
+        # States as rows.
         state_mtx = cvxopt.matrix(self.vectors)
         num_states, dim = state_mtx.size[0], state_mtx.size[1]
 
@@ -65,7 +80,7 @@ class AntiDist:
             mtx = state_mtx[i, :].H * state_mtx[i, :]
             density_matrices.append(picos.Constant("ρ[{}]".format(i), mtx))
 
-        # Set up variables for SDP:
+        # Set up variables for SDP.
         y_var = picos.HermitianVariable("Y", (dim, dim))
         problem.add_list_of_constraints([y_var << p for p in density_matrices])
 
