@@ -29,8 +29,8 @@ class AntiDist:
 
         Args:
             dim: Dimension of states.
-            vectors: Optional argument to supply specific vectors
-            verbose: Optional argument for SDP solver verbosity.
+            vectors: Optional argument to supply specific vectors. Default None.
+            verbose: Optional argument for SDP solver verbosity. Default False.
         """
         self.dim = dim
 
@@ -63,7 +63,13 @@ class AntiDist:
 
     @property
     def is_antidistinguishable(self) -> bool:
-        """Return whether the states are antidistinguishable.
+        """Return whether the states are antidistinguishable. This solves the
+        semidefinite program from ariXiv:1306.4683 whose optimal value
+        corresponds to whether a collection of states are antidistinguishable or
+        not. More specifically, if the value of the SDP is strictly greater than
+        zero, the states are antidistinguishable. Otherwise, they are not. The
+        authors of arXiv:1306.4683 study the antidistinguishability problem
+        under the guide of "unambiguous quantum state exclusion".
 
         Return:
             True if the states are antidistinguishable, False otherwise.
@@ -99,10 +105,10 @@ class AntiDist:
     def is_inequality_satisfied(self) -> bool:
         """The anti-distinguishability conjecture states that for |ρ_1>, ...,
         |ρ_d> pure states, if |<ρ_i|ρ_j>| ≤ (d − 2)/(d − 1) for all i != j, then
-        the states are anti-distinguishable.
+        the states are antidistinguishable.
 
         Returns:
-            True if the conjecture is satisfied, False otherwise.
+            True if the inequality is satisfied, False otherwise.
         """
         self.smallest_overlap = float("inf")
         self.largest_overlap = float("-inf")

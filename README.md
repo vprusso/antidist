@@ -4,12 +4,12 @@ The `antidist` package is a Python toolkit for studying the
 antidistinguishability conjecture. This repo contains companion code for the
 arXiv:XX note. 
 
-This code provides an example of a counterexample to the conjecture, but it can
-also be used to study antidistinguishability more broadly.
+This code provides a counterexample to the conjecture, but it can also be used
+to study antidistinguishability more broadly.
 
 ### Antidistinguishability Conjecture
 
-The antidistinguishability conjecture was originally states in [1].
+The antidistinguishability conjecture was originally stated in [1].
 Specifically, from Appendix-C of [1], the conjecture is stated as follows:
 
 > Let |ρ_1>, ..., |ρ_d> be d pure states. If |<ρ_i|ρ_j>| ≤ (d − 2)/(d − 1) for all i != j, then the states are anti-distinguishable.
@@ -59,7 +59,7 @@ Iteration 10 out of 10. Is antidistinguishable: True -- Is violated: False
 
 ### Examples
 
-The counterexample shown in [4] can be invoked 
+The counterexample shown in [4] can be invoked as follows:
 
 ```
 >>> python src/counter_example.py
