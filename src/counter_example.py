@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Vincent Russo
+# Copyright (C) 2022 Vincent Russo
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ from antidist import AntiDist
 
 
 if __name__ == "__main__":
-    dim = 4
+    dim: int = 4
     vectors = np.array(
         [
             [

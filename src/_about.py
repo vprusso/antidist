@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Vincent Russo
+# Copyright (C) 2022 Vincent Russo
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ def about() -> None:
     about_str = f"""
 antidist: Python package for studying the antidistinguishability conjecture.
 ==============================================================================
-Authored by: Vincent Russo, 2021
+Authored by: Vincent Russo, 2022
 
 Core Dependencies
 -----------------

@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Vincent Russo
+# Copyright (C) 2022 Vincent Russo
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -44,14 +44,14 @@ class AntiDist:
         self.vectors = self.generate_random_vectors() if vectors is None else vectors
         self.verbose = verbose
 
-    def generate_random_vectors(self) -> np.ndarray:
+    def generate_random_vectors(self) -> list[np.ndarray]:
         """Return a list of "d" d-dimensional Haar-random vectors.
 
         Returns:
             An np.ndarray of "d" d-dimensional complex random vectors.
         """
         components = np.random.randn(self.dim * self.dim, 2).view(np.complex128)
-        vectors = []
+        vectors: list[np.ndarray] = []
         for v in range(self.dim):
             vectors.append([])
             for c in range(self.dim):
