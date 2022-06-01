@@ -12,7 +12,7 @@ to study antidistinguishability more broadly.
 The antidistinguishability conjecture was originally stated in [1].
 Specifically, from Appendix-C of [1], the conjecture is stated as follows:
 
-> Let |ρ_1>, ..., |ρ_d> be d pure states. If |<ρ_i|ρ_j>| ≤ (d − 2)/(d − 1) for all i != j, then the states are anti-distinguishable.
+> Let |Ψ_1>, ..., |Ψ_d> be d pure states. If |<Ψ_i|Ψ_j>| ≤ (d − 2)/(d − 1) for all i != j, then the states are antidistinguishable.
 
 The conjecture trivially holds for d = 2 and it also holds for d = 3 based on
 [2].
@@ -88,7 +88,7 @@ Physical Review A 89.2 (2014): 022336.
 arXiv:1306.4683
 
 [4] Russo, Vincent and Sikora, Jamie
-""
+"A note on inner products of pure quantum states and their antidistinguishability",
 arXiv:XX
 ```
 

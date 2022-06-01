@@ -103,8 +103,8 @@ class AntiDist:
 
     @property
     def is_inequality_satisfied(self) -> bool:
-        """The anti-distinguishability conjecture states that for |ρ_1>, ...,
-        |ρ_d> pure states, if |<ρ_i|ρ_j>| ≤ (d − 2)/(d − 1) for all i != j, then
+        """The anti-distinguishability conjecture states that for |Ψ_1>, ...,
+        |Ψ_d> pure states, if |<Ψ_i|Ψ_j>| ≤ (d − 2)/(d − 1) for all i != j, then
         the states are antidistinguishable.
 
         Returns:
