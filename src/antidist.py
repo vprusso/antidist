@@ -126,7 +126,7 @@ class AntiDist:
                     self.smallest_overlap = min(self.smallest_overlap, ip_val)
                     self.largest_overlap = max(self.largest_overlap, ip_val)
 
-                    # If |<ρ_i|ρ_j>| > (d − 2)/(d − 1) for some i != j, return
+                    # If |<Ψ_i|Ψ_j>| > (d − 2)/(d − 1) for some i != j, return
                     # False.
                     if ip_val > self.upper_bound:
                         return False
