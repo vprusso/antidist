@@ -2,7 +2,7 @@
 
 The `antidist` package is a Python toolkit for studying the
 antidistinguishability conjecture. This repo contains companion code for the
-arXiv:XX note. 
+arXiv:2206.08313 note. 
 
 This code provides a counterexample to the conjecture, but it can also be used
 to study antidistinguishability more broadly.
@@ -88,7 +88,7 @@ Physical Review A 89.2 (2014): 022336.
 arXiv:1306.4683
 
 [4] Russo, Vincent and Sikora, Jamie
-"A note on inner products of pure quantum states and their antidistinguishability",
-arXiv:XX
+"A note on the inner products of pure states and their antidistinguishability",
+arXiv:2206.08313
 ```
 
