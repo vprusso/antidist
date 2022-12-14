@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Counterexample of antidistinguishability conjecture from arXiv:XX."""
+"""Counterexample of antidistinguishability conjecture from arXiv:2206.08313."""
 import numpy as np
 
 from antidist import AntiDist
